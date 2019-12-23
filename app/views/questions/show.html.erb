@@ -1,0 +1,22 @@
+<div class="posts">
+  <div>
+    <h3><%= @question.title %></h3>
+    <b> Submitted:</b> <%= time_ago_in_words(@question.created_at) %> ago <b>by:</b>
+    <%= @question.user.email %>
+  </div>
+  <p>  <b>description: </b>
+<%= @question.description %> </p>
+</div>
+
+<h3>Comments</h3>
+
+<%= form_for [@question, Comment.new] do |f| %>
+<%= f.hidden_field :user_id, value: current_user&.id%>
+<%= f.text_area :body, placeholder: "Add a comment", class: 'form-control',  required: true%><br/>
+<%= f.submit "Add Comment", class: "btn btn-primary"%>
+<% end %>
+
+
+<ul>
+  <%= render(partial: 'comments/comment', collection: @question.comments) %>
+</ul>

@@ -1,0 +1,5 @@
+<%= form_for [comment, Comment.new] do |f| %>
+    <%= f.hidden_field :user_id, value: current_user&.id%>
+    <%= f.text_area :body, placeholder: "Add a Reply", class: 'form-control form-control-sm', required: true %><br/>
+    <%= f.submit "Reply", class: "btn btn-primary" %>
+<% end %>
