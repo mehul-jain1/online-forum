@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Notifications</h1>
+
+<div class="posts">
+    <% @notifications.each do |notification| %>
+        <div class="post">
+          <h2 class="title">
+            <%= link_to notification.name, notification %>
+          </h2>
+        </div>
+    <% end %>
+</div>
+<br>

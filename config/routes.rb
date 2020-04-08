@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :notifications
   root to: 'questions#index'
   devise_for :users
   
@@ -11,5 +12,7 @@ Rails.application.routes.draw do
   resources :comments do
     resources :comments 
   end
+  
+  mount ActionCable.server => "/cable"
 
 end

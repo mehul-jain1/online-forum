@@ -7,15 +7,15 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.all.order(created_at: :desc)
+    @questions = get_questions
   end
 
   def create
     @question = @user.questions.new(question_params)
     if @question.save
+      invoke_cables
       flash[:notice] = "Succesfully Posted"
       redirect_to @question
-
     else
       render 'new'
     end
@@ -47,10 +47,19 @@ class QuestionsController < ApplicationController
   end
 
   def find_question
-    @question = Question.find(params[:id])    
+    @question = Question.find(params[:id])
   end
 
   def set_user
     @user = current_user if current_user
+  end
+
+  def get_questions
+    Question.all.order(created_at: :desc)
+  end
+
+  def invoke_cables
+    html = ApplicationController.render(partial: 'questions/questions', locals: {questions: get_questions})
+    NotificationRelayJob.perform_later('request', html)
   end
 end

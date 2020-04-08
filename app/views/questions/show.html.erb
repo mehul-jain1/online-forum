@@ -17,6 +17,6 @@
 <% end %>
 
 
-<ul>
+<ul class="comments" data-questionid= <%= @question.id %> >
   <%= render(partial: 'comments/comment', collection: @question.comments) %>
 </ul>

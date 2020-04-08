@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= action_cable_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Online Forum" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Online Forum" %>">
