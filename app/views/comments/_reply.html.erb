@@ -1,0 +1,4 @@
+<li>
+ <p><%= reply.body %></p>
+ <div><small>Submitted <%= time_ago_in_words(reply.created_at) %> ago by : <%= reply&.user&.email%> </small> </div>
+</li>

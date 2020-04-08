@@ -1,0 +1,7 @@
+<div class="new_question_button">
+  <%= link_to "New Request", new_question_path %>
+</div>
+
+<div class="posts">
+  <%= render(partial: 'questions', locals: {questions: @questions}) %>
+</div>

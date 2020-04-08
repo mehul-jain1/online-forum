@@ -1,0 +1,11 @@
+<div class= 'comment_wrapper'>
+  <li>
+    <p><%= comment.body %> 
+    <div><small>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small> by: <%= comment&.user&.email%> </p></div>
+    <h4>Replies:</h4>
+    <ul>
+      <%= render(partial: 'comments/reply', collection: comment.comments) %>
+      <%= render(partial: 'comments/new_reply', locals: {comment: comment}) %>
+    </ul>
+  </li>
+</div>
